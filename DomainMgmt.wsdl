@@ -1,0 +1,2286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="OMI" targetNamespace="http://www.verimatrix.com/omi" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.verimatrix.com/omi" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:types="http://www.verimatrix.com/schemas/OMItypes.xsd">
+  <wsdl:types>
+    <xs:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.verimatrix.com/schemas/OMItypes.xsd" schemaLocation="OMI-Types-3.6.xsd"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="removeDevicesRequest">
+    <wsdl:part name="deviceList" type="types:DeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSiteResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkDevicePairResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEntitlementsResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateDeviceCommandResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyDomainDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyPackagesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshDeviceEntitlementsRequest">
+    <wsdl:part name="device" type="types:Device">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addContentResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeDomainDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDevicePurseRequest">
+    <wsdl:part name="device" type="types:Device">
+    </wsdl:part>
+    <wsdl:part name="devicePurse" type="types:DevicePurse">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyNetworkRequest">
+    <wsdl:part name="network" type="types:Network">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPackageListResponse">
+    <wsdl:part name="queryResult" type="types:PackageListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="diagnoseOSMRequest">
+    <wsdl:part name="messageEntity" type="types:MessageEntity">
+    </wsdl:part>
+    <wsdl:part name="message" type="types:OnScreenMessage">
+    </wsdl:part>
+    <wsdl:part name="packageList" type="types:PackageList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeviceDomainListRequest">
+    <wsdl:part name="deviceDomainListQuery" type="types:DeviceDomainListQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDeviceRegionResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkDeviceIdListRequest">
+    <wsdl:part name="networkDeviceIdListQuery" type="types:NetworkDeviceIdQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSiteResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeContentResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="unjoinDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPackagesRequest">
+    <wsdl:part name="packageList" type="types:PackageList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removePackagesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkDeviceIdListResponse">
+    <wsdl:part name="queryResult" type="types:NetworkDeviceIdResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSmartCardDevicePairingResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPackagesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkContentIdListResponse">
+    <wsdl:part name="queryResult" type="types:NetworkContentIdResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="preloadMessageRequest">
+    <wsdl:part name="messageEntity" type="types:MessageEntity">
+    </wsdl:part>
+    <wsdl:part name="message" type="types:PreloadedMessage">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContentOnNetworkResponse">
+    <wsdl:part name="queryResult" type="types:NetworkContentResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyDeviceResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeAllEntitlementsResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkDevicePairRequest">
+    <wsdl:part name="devicePair" type="types:DevicePair">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyPackagesRequest">
+    <wsdl:part name="packageList" type="types:PackageList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeDomainsResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="signOffResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkContentListResponse">
+    <wsdl:part name="queryResult" type="types:NetworkContentResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyDevicesRequest">
+    <wsdl:part name="deviceList" type="types:DeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeEventsFromPackageRequest">
+    <wsdl:part name="package" type="types:Package">
+    </wsdl:part>
+    <wsdl:part name="eventList" type="types:EventList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="clearDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDevicePurseResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addContentRequest">
+    <wsdl:part name="contentList" type="types:ContentList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateDeviceCommandRequest">
+    <wsdl:part name="messageEntity" type="types:MessageEntity">
+    </wsdl:part>
+    <wsdl:part name="command" type="types:DeviceCommand">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSiteListRequest">
+    <wsdl:part name="siteListQuery" type="types:SiteListQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDomainDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDevicesRequest">
+    <wsdl:part name="deviceList" type="types:DeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeContentRequest">
+    <wsdl:part name="contentList" type="types:ContentList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generatePreloadedPackageOSMRequest">
+    <wsdl:part name="messageEntity" type="types:MessageEntity">
+    </wsdl:part>
+    <wsdl:part name="message" type="types:PreloadedOnScreenMessage">
+    </wsdl:part>
+    <wsdl:part name="packageList" type="types:PackageList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyNetworkResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSTBPairingResponse">
+    <wsdl:part name="queryResult" type="types:STBPairingResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeNetworkResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeEventsRequest">
+    <wsdl:part name="eventList" type="types:EventList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEventPackagesResponse">
+    <wsdl:part name="queryResult" type="types:EventPackageResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="disableDevicesRequest">
+    <wsdl:part name="deviceList" type="types:DeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContentEventsRequest">
+    <wsdl:part name="contentEventQuery" type="types:ContentEventQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContentListRequest">
+    <wsdl:part name="contentListQuery" type="types:ContentListQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLicenseGroupsRequest">
+    <wsdl:part name="licenseGroupsQuery" type="types:LicenseGroupsQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDevicePairRequest">
+    <wsdl:part name="devicePair" type="types:DevicePair">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyDomainsRequest">
+    <wsdl:part name="domainList" type="types:DomainList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEventPackagesRequest">
+    <wsdl:part name="eventPackageQuery" type="types:EventPackageQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPackageListRequest">
+    <wsdl:part name="packageListQuery" type="types:PackageListQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyContentOnNetworkResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkDeviceListResponse">
+    <wsdl:part name="queryResult" type="types:DeviceListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeEventsResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSiteRequest">
+    <wsdl:part name="siteQuery" type="types:SiteQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSiteResponse">
+    <wsdl:part name="queryResult" type="types:SiteResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeDevicePairResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyEntitlementsRequest">
+    <wsdl:part name="entitlementList" type="types:EntitlementList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDevicePinsResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addContentToNetworkRequest">
+    <wsdl:part name="networkContent" type="types:NetworkContent">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEventsToPackageResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeviceTypeLicenseDataResponse">
+    <wsdl:part name="queryResult" type="types:DeviceTypeLicenseDataResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateOSMRequest">
+    <wsdl:part name="messageEntity" type="types:MessageEntity">
+    </wsdl:part>
+    <wsdl:part name="message" type="types:OnScreenMessage">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addNetworkResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="joinDevicesRequest">
+    <wsdl:part name="masterDevice" type="types:Device">
+    </wsdl:part>
+    <wsdl:part name="slaveDeviceList" type="types:DeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSmartCardPairingRequest">
+    <wsdl:part name="smartCardPairingQuery" type="types:SmartCardPairingQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeDevicePairRequest">
+    <wsdl:part name="devicePair" type="types:DevicePair">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDevicePinsRequest">
+    <wsdl:part name="device" type="types:Device">
+    </wsdl:part>
+    <wsdl:part name="devicePinList" type="types:DevicePinList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkContentEncryptionStatusResponse">
+    <wsdl:part name="queryResult" type="types:NetworkContentEncryptionResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupLicenseDataRequest">
+    <wsdl:part name="groupLicenseDataQuery" type="types:GroupLicenseDataQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="unjoinDevicesRequest">
+    <wsdl:part name="deviceList" type="types:DeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generatePreloadedPackageOSMResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshDeviceEntitlementsResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRetailerEntitlementsRequest">
+    <wsdl:part name="entitlementQuery" type="types:RetailerEntitlementQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPackageEventsResponse">
+    <wsdl:part name="queryResult" type="types:PackageEventResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generatePackageOSMResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeDomainDevicesRequest">
+    <wsdl:part name="domain" type="types:Domain">
+    </wsdl:part>
+    <wsdl:part name="deviceList" type="types:DomainDeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkContentListRequest">
+    <wsdl:part name="networkContentQuery" type="types:NetworkContentQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateOSMResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntitlementListRequest">
+    <wsdl:part name="entitlementListQuery" type="types:EntitlementListQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyDomainDevicesRequest">
+    <wsdl:part name="domain" type="types:Domain">
+    </wsdl:part>
+    <wsdl:part name="deviceList" type="types:DomainDeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyDeviceRequest">
+    <wsdl:part name="device" type="types:Device">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSmartCardDevicePairingRequest">
+    <wsdl:part name="smartCardDevice" type="types:SmartCardDevice">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSiteRequest">
+    <wsdl:part name="site" type="types:Site">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkContentEncryptionStatusRequest">
+    <wsdl:part name="networkContentEncryptionQuery" type="types:NetworkContentEncryptionQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="signOnRequest">
+    <wsdl:part name="userAttributes" type="types:UserLoginAttributes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomainListResponse">
+    <wsdl:part name="queryResult" type="types:DomainListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeNetworkRequest">
+    <wsdl:part name="network" type="types:Network">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeviceDomainListResponse">
+    <wsdl:part name="queryResult" type="types:DomainListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifySiteRequest">
+    <wsdl:part name="site" type="types:Site">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeEntitlementsResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generatePreloadedOSMRequest">
+    <wsdl:part name="messageEntity" type="types:MessageEntity">
+    </wsdl:part>
+    <wsdl:part name="message" type="types:PreloadedOnScreenMessage">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeContentFromNetworkResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEventsRequest">
+    <wsdl:part name="eventList" type="types:EventList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generatePackageOSMRequest">
+    <wsdl:part name="messageEntity" type="types:MessageEntity">
+    </wsdl:part>
+    <wsdl:part name="message" type="types:OnScreenMessage">
+    </wsdl:part>
+    <wsdl:part name="packageList" type="types:PackageList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDevicePairResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeviceEntitlementsResponse">
+    <wsdl:part name="queryResult" type="types:DeviceEntitlementResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDomainDevicesRequest">
+    <wsdl:part name="domain" type="types:Domain">
+    </wsdl:part>
+    <wsdl:part name="deviceList" type="types:DomainDeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="signOffRequest">
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRetailerEntitlementsResponse">
+    <wsdl:part name="queryResult" type="types:RetailerEntitlementResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSTBDevicePairingResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeDomainsRequest">
+    <wsdl:part name="domainList" type="types:DomainList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeviceListResponse">
+    <wsdl:part name="queryResult" type="types:DeviceListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSTBPairingRequest">
+    <wsdl:part name="stbPairingQuery" type="types:STBPairingQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enableDevicesRequest">
+    <wsdl:part name="deviceList" type="types:DeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEntitlementsRequest">
+    <wsdl:part name="entitlementList" type="types:EntitlementList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="joinDevicesResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeAllEntitlementsRequest">
+    <wsdl:part name="entitledEntityList" type="types:EntitledEntityList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetDevicePinsResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomainEntitlementsResponse">
+    <wsdl:part name="queryResult" type="types:DomainEntitlementResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeContentFromNetworkRequest">
+    <wsdl:part name="networkContent" type="types:NetworkContent">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeEntitlementsRequest">
+    <wsdl:part name="entitlementList" type="types:EntitlementList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSiteListResponse">
+    <wsdl:part name="queryResult" type="types:SiteListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSiteRequest">
+    <wsdl:part name="site" type="types:Site">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopPreEntitlementsResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSTBDevicePairingRequest">
+    <wsdl:part name="stbDevice" type="types:STBDevice">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removePreloadedMessageResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEventsToPackageRequest">
+    <wsdl:part name="package" type="types:Package">
+    </wsdl:part>
+    <wsdl:part name="eventList" type="types:EventList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomainEntitlementsRequest">
+    <wsdl:part name="entitlementQuery" type="types:DomainEntitlementQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeEventsFromPackageResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addNetworkRequest">
+    <wsdl:part name="network" type="types:Network">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContentEventsResponse">
+    <wsdl:part name="queryResult" type="types:ContentEventResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeviceEntitlementsRequest">
+    <wsdl:part name="entitlementQuery" type="types:DeviceEntitlementQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removePreloadedMessageRequest">
+    <wsdl:part name="messageEntity" type="types:MessageEntity">
+    </wsdl:part>
+    <wsdl:part name="message" type="types:PreloadedMessage">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="preloadMessageResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDomainsResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteOSMResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEventsResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshDeviceKeysResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="disableDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifySiteResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContentListResponse">
+    <wsdl:part name="queryResult" type="types:ContentListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="clearDevicesRequest">
+    <wsdl:part name="deviceList" type="types:DeviceList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeviceListRequest">
+    <wsdl:part name="deviceListQuery" type="types:DeviceListQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDomainsRequest">
+    <wsdl:part name="domainList" type="types:DomainList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLicenseGroupsResponse">
+    <wsdl:part name="queryResult" type="types:LicenseGroupsResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetDevicePinsRequest">
+    <wsdl:part name="device" type="types:Device">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generatePreloadedOSMResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopPreEntitlementsRequest">
+    <wsdl:part name="entitledEntity" type="types:EntitledEntity">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyEntitlementsResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPackageEventsRequest">
+    <wsdl:part name="packageEventQuery" type="types:PackageEventQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContentOnNetworkRequest">
+    <wsdl:part name="contentOnNetworkQuery" type="types:ContentOnNetworkQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removePackagesRequest">
+    <wsdl:part name="packageList" type="types:PackageList">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="diagnoseOSMResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkContentTypeEncryptionStatusResponse">
+    <wsdl:part name="queryResult" type="types:NetworkContentTypeEncryptionResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addContentToNetworkResponse">
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkDeviceListRequest">
+    <wsdl:part name="networkDeviceListQuery" type="types:NetworkDeviceListQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkContentIdListRequest">
+    <wsdl:part name="networkContentIdQuery" type="types:NetworkContentIdQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSmartCardPairingResponse">
+    <wsdl:part name="queryResult" type="types:SmartCardPairingResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyContentOnNetworkRequest">
+    <wsdl:part name="networkContent" type="types:NetworkContent">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDeviceTypeLicenseDataRequest">
+    <wsdl:part name="deviceTypeLicenseDataQuery" type="types:DeviceTypeLicenseDataQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntitlementListResponse">
+    <wsdl:part name="queryResult" type="types:EntitlementListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDeviceRegionRequest">
+    <wsdl:part name="device" type="types:Device">
+    </wsdl:part>
+    <wsdl:part name="deviceRegion" type="types:DeviceRegion">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkListRequest">
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteOSMRequest">
+    <wsdl:part name="messageEntity" type="types:MessageEntity">
+    </wsdl:part>
+    <wsdl:part name="message" type="types:MessageHandle">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enableDevicesResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomainDeviceListRequest">
+    <wsdl:part name="domainDeviceListQuery" type="types:DomainDeviceListQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomainDeviceListResponse">
+    <wsdl:part name="queryResult" type="types:DomainDeviceListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDomainListRequest">
+    <wsdl:part name="domainListQuery" type="types:DomainListQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="signOnResponse">
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+    <wsdl:part name="result" type="types:Result">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupLicenseDataResponse">
+    <wsdl:part name="queryResult" type="types:GroupLicenseDataResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkListResponse">
+    <wsdl:part name="queryResult" type="types:NetworkListResult">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyDomainsResponse">
+    <wsdl:part name="resultList" type="types:ResultList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshDeviceKeysRequest">
+    <wsdl:part name="device" type="types:Device">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNetworkContentTypeEncryptionStatusRequest">
+    <wsdl:part name="networkContentTypeEncryptionQuery" type="types:NetworkContentTypeEncryptionQuery">
+    </wsdl:part>
+    <wsdl:part name="sessionHandle" type="types:SessionHandle">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ConfigurationMgmt">
+    <wsdl:operation name="addNetwork">
+      <wsdl:input message="tns:addNetworkRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addNetworkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyNetwork">
+      <wsdl:input message="tns:modifyNetworkRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyNetworkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeNetwork">
+      <wsdl:input message="tns:removeNetworkRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeNetworkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkList">
+      <wsdl:input message="tns:getNetworkListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getNetworkListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkDeviceList">
+      <wsdl:input message="tns:getNetworkDeviceListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getNetworkDeviceListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkContentList">
+      <wsdl:input message="tns:getNetworkContentListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getNetworkContentListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLicenseGroups">
+      <wsdl:input message="tns:getLicenseGroupsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getLicenseGroupsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceTypeLicenseData">
+      <wsdl:input message="tns:getDeviceTypeLicenseDataRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getDeviceTypeLicenseDataResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupLicenseData">
+      <wsdl:input message="tns:getGroupLicenseDataRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getGroupLicenseDataResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSite">
+      <wsdl:input message="tns:addSiteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addSiteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifySite">
+      <wsdl:input message="tns:modifySiteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:modifySiteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeSite">
+      <wsdl:input message="tns:removeSiteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeSiteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSite">
+      <wsdl:input message="tns:getSiteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getSiteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSiteList">
+      <wsdl:input message="tns:getSiteListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getSiteListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ContentMgmt">
+    <wsdl:operation name="addEvents">
+      <wsdl:input message="tns:addEventsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addEventsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeEvents">
+      <wsdl:input message="tns:removeEventsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeEventsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addContent">
+      <wsdl:input message="tns:addContentRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addContentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeContent">
+      <wsdl:input message="tns:removeContentRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeContentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addContentToNetwork">
+      <wsdl:input message="tns:addContentToNetworkRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addContentToNetworkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyContentOnNetwork">
+      <wsdl:input message="tns:modifyContentOnNetworkRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyContentOnNetworkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeContentFromNetwork">
+      <wsdl:input message="tns:removeContentFromNetworkRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeContentFromNetworkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContentList">
+      <wsdl:input message="tns:getContentListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getContentListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContentEvents">
+      <wsdl:input message="tns:getContentEventsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getContentEventsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContentOnNetwork">
+      <wsdl:input message="tns:getContentOnNetworkRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getContentOnNetworkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkContentEncryptionStatus">
+      <wsdl:input message="tns:getNetworkContentEncryptionStatusRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getNetworkContentEncryptionStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkContentTypeEncryptionStatus">
+      <wsdl:input message="tns:getNetworkContentTypeEncryptionStatusRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getNetworkContentTypeEncryptionStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkContentIdList">
+      <wsdl:input message="tns:getNetworkContentIdListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getNetworkContentIdListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DomainMgmt">
+    <wsdl:operation name="addDomains">
+      <wsdl:input message="tns:addDomainsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addDomainsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyDomains">
+      <wsdl:input message="tns:modifyDomainsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyDomainsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeDomains">
+      <wsdl:input message="tns:removeDomainsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeDomainsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addDomainDevices">
+      <wsdl:input message="tns:addDomainDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addDomainDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyDomainDevices">
+      <wsdl:input message="tns:modifyDomainDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyDomainDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeDomainDevices">
+      <wsdl:input message="tns:removeDomainDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeDomainDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainList">
+      <wsdl:input message="tns:getDomainListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getDomainListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainDeviceList">
+      <wsdl:input message="tns:getDomainDeviceListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getDomainDeviceListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceDomainList">
+      <wsdl:input message="tns:getDeviceDomainListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getDeviceDomainListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DeviceMgmt">
+    <wsdl:operation name="addDevices">
+      <wsdl:input message="tns:addDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyDevices">
+      <wsdl:input message="tns:modifyDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeDevices">
+      <wsdl:input message="tns:removeDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enableDevices">
+      <wsdl:input message="tns:enableDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:enableDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="disableDevices">
+      <wsdl:input message="tns:disableDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:disableDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clearDevices">
+      <wsdl:input message="tns:clearDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:clearDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshDeviceKeys">
+      <wsdl:input message="tns:refreshDeviceKeysRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshDeviceKeysResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshDeviceEntitlements">
+      <wsdl:input message="tns:refreshDeviceEntitlementsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshDeviceEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resetDevicePins">
+      <wsdl:input message="tns:resetDevicePinsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:resetDevicePinsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDevicePins">
+      <wsdl:input message="tns:setDevicePinsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:setDevicePinsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDeviceRegion">
+      <wsdl:input message="tns:setDeviceRegionRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:setDeviceRegionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDevicePurse">
+      <wsdl:input message="tns:setDevicePurseRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:setDevicePurseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="joinDevices">
+      <wsdl:input message="tns:joinDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:joinDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unjoinDevices">
+      <wsdl:input message="tns:unjoinDevicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:unjoinDevicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addDevicePair">
+      <wsdl:input message="tns:addDevicePairRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addDevicePairResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeDevicePair">
+      <wsdl:input message="tns:removeDevicePairRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeDevicePairResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeSmartCardDevicePairing">
+      <wsdl:input message="tns:removeSmartCardDevicePairingRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeSmartCardDevicePairingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeSTBDevicePairing">
+      <wsdl:input message="tns:removeSTBDevicePairingRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeSTBDevicePairingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkDevicePair">
+      <wsdl:input message="tns:checkDevicePairRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:checkDevicePairResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyDevice">
+      <wsdl:input message="tns:verifyDeviceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyDeviceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSmartCardPairing">
+      <wsdl:input message="tns:getSmartCardPairingRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getSmartCardPairingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSTBPairing">
+      <wsdl:input message="tns:getSTBPairingRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getSTBPairingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceList">
+      <wsdl:input message="tns:getDeviceListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getDeviceListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkDeviceIdList">
+      <wsdl:input message="tns:getNetworkDeviceIdListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getNetworkDeviceIdListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EntitlementMgmt">
+    <wsdl:operation name="addPackages">
+      <wsdl:input message="tns:addPackagesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addPackagesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyPackages">
+      <wsdl:input message="tns:modifyPackagesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyPackagesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePackages">
+      <wsdl:input message="tns:removePackagesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removePackagesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addEventsToPackage">
+      <wsdl:input message="tns:addEventsToPackageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addEventsToPackageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeEventsFromPackage">
+      <wsdl:input message="tns:removeEventsFromPackageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeEventsFromPackageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addEntitlements">
+      <wsdl:input message="tns:addEntitlementsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyEntitlements">
+      <wsdl:input message="tns:modifyEntitlementsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeEntitlements">
+      <wsdl:input message="tns:removeEntitlementsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeAllEntitlements">
+      <wsdl:input message="tns:removeAllEntitlementsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removeAllEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stopPreEntitlements">
+      <wsdl:input message="tns:stopPreEntitlementsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:stopPreEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEntitlementList">
+      <wsdl:input message="tns:getEntitlementListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getEntitlementListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceEntitlements">
+      <wsdl:input message="tns:getDeviceEntitlementsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getDeviceEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainEntitlements">
+      <wsdl:input message="tns:getDomainEntitlementsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getDomainEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRetailerEntitlements">
+      <wsdl:input message="tns:getRetailerEntitlementsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getRetailerEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPackageList">
+      <wsdl:input message="tns:getPackageListRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getPackageListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPackageEvents">
+      <wsdl:input message="tns:getPackageEventsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getPackageEventsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEventPackages">
+      <wsdl:input message="tns:getEventPackagesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getEventPackagesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AdminMgmt">
+    <wsdl:operation name="signOn">
+      <wsdl:input message="tns:signOnRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:signOnResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signOff">
+      <wsdl:input message="tns:signOffRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:signOffResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Messaging">
+    <wsdl:operation name="generateOSM">
+      <wsdl:input message="tns:generateOSMRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:generateOSMResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generatePackageOSM">
+      <wsdl:input message="tns:generatePackageOSMRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:generatePackageOSMResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOSM">
+      <wsdl:input message="tns:deleteOSMRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteOSMResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="diagnoseOSM">
+      <wsdl:input message="tns:diagnoseOSMRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:diagnoseOSMResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateDeviceCommand">
+      <wsdl:input message="tns:generateDeviceCommandRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:generateDeviceCommandResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="preloadMessage">
+      <wsdl:input message="tns:preloadMessageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:preloadMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePreloadedMessage">
+      <wsdl:input message="tns:removePreloadedMessageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:removePreloadedMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generatePreloadedOSM">
+      <wsdl:input message="tns:generatePreloadedOSMRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:generatePreloadedOSMResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generatePreloadedPackageOSM">
+      <wsdl:input message="tns:generatePreloadedPackageOSMRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:generatePreloadedPackageOSMResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConfigurationMgmt" type="tns:ConfigurationMgmt">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addNetwork">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addNetwork"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyNetwork">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/modifyNetwork"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeNetwork">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeNetwork"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getNetworkList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkDeviceList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getNetworkDeviceList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkContentList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getNetworkContentList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLicenseGroups">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getLicenseGroups"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceTypeLicenseData">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getDeviceTypeLicenseData"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupLicenseData">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getGroupLicenseData"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSite">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addSite"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifySite">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/modifySite"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeSite">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeSite"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSite">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getSite"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSiteList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getSiteList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ContentMgmt" type="tns:ContentMgmt">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addEvents">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addEvents"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeEvents">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeEvents"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addContent">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addContent"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeContent">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeContent"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContentList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getContentList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContentEvents">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getContentEvents"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addContentToNetwork">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addContentToNetwork"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeContentFromNetwork">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeContentFromNetwork"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkContentEncryptionStatus">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getNetworkContentEncryptionStatus"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyContentOnNetwork">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/modifyContentOnNetwork"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContentOnNetwork">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getContentOnNetwork"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkContentTypeEncryptionStatus">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getNetworkContentTypeEncryptionStatus"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkContentIdList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getNetworkContentIdList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DomainMgmt" type="tns:DomainMgmt">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addDomains">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addDomains"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyDomains">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/modifyDomains"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeDomains">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeDomains"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addDomainDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addDomainDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyDomainDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/modifyDomainDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeDomainDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeDomainDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getDomainList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainDeviceList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getDomainDeviceList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceDomainList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getDeviceDomainList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DeviceMgmt" type="tns:DeviceMgmt">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/modifyDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clearDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/clearDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshDeviceKeys">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/refreshDeviceKeys"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resetDevicePins">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/resetDevicePins"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDevicePins">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/setDevicePins"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDeviceRegion">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/setDeviceRegion"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDevicePurse">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/setDevicePurse"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="joinDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/joinDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unjoinDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/unjoinDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addDevicePair">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addDevicePair"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeDevicePair">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeDevicePair"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeSmartCardDevicePairing">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeSmartCardDevicePairing"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeSTBDevicePairing">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeSTBDevicePairing"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkDevicePair">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/checkDevicePair"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSmartCardPairing">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getSmartCardPairing"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSTBPairing">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getSTBPairing"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getDeviceList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enableDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/enableDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="disableDevices">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/disableDevices"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNetworkDeviceIdList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getNetworkDeviceIdList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyDevice">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/verifyDevice"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refreshDeviceEntitlements">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/refreshDeviceEntitlements"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EntitlementMgmt" type="tns:EntitlementMgmt">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addEntitlements">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addEntitlements"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyEntitlements">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/modifyEntitlements"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeEntitlements">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeEntitlements"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeAllEntitlements">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeAllEntitlements"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stopPreEntitlements">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/stopPreEntitlements"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceEntitlements">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getDeviceEntitlements"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainEntitlements">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getDomainEntitlements"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPackages">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addPackages"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePackages">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removePackages"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addEventsToPackage">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/addEventsToPackage"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeEventsFromPackage">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removeEventsFromPackage"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPackageList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getPackageList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPackageEvents">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getPackageEvents"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEntitlementList">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getEntitlementList"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEventPackages">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getEventPackages"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyPackages">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/modifyPackages"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRetailerEntitlements">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/getRetailerEntitlements"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminMgmt" type="tns:AdminMgmt">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="signOn">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/signOn"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signOff">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/signOff"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Messaging" type="tns:Messaging">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="generateOSM">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/generateOSM"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generatePackageOSM">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/generatePackageOSM"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOSM">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/deleteOSM"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="diagnoseOSM">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/diagnoseOSM"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateDeviceCommand">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/generateDeviceCommand"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="preloadMessage">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/preloadMessage"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePreloadedMessage">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/removePreloadedMessage"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generatePreloadedOSM">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/generatePreloadedOSM"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generatePreloadedPackageOSM">
+      <soap:operation soapAction="http://www.verimatrix.com/omi/generatePreloadedPackageOSM"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://www.verimatrix.com/omi"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DomainMgmtService">
+    <wsdl:port name="DomainMgmt" binding="tns:DomainMgmt">
+      <soap:address location="https://omi.fimnet.vn:8090/services/DomainMgmtService/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

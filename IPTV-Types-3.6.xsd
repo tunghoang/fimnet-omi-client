@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.verimatrix.com/schemas/IPTVtypes.xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.verimatrix.com/schemas/IPTVtypes.xsd">
+    <xs:simpleType name="EncryptionMode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="AES"/>
+            <xs:enumeration value="RC4"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CGMS_A">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ACP">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="CopyControlAttributes">
+        <xs:sequence>
+            <xs:element name="ccCGMS_A" type="CGMS_A"/>
+            <xs:element name="ccACP" type="ACP"/>
+            <xs:element name="ccDwightCavendish" type="xs:boolean"/>
+            <xs:element name="ccHDCP" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="ccDOT" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="OSDAttributes">
+        <xs:sequence>
+            <xs:element name="osdActive" type="xs:boolean"/>
+            <xs:element name="osdDuration" type="xs:int"/>
+            <xs:element name="osdType" type="xs:int"/>
+            <xs:element name="osdLocation" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="KeyInterval">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="2147483647"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EncryptionPercent">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="EncryptionAttributes">
+        <xs:sequence>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="encryptionMode" type="EncryptionMode"/>
+            <xs:element name="pcrCorrection" type="xs:boolean"/>
+            <xs:element name="keyMutationInterval" type="KeyInterval"/>
+            <xs:element name="keyInsertionInterval" type="KeyInterval"/>
+            <xs:element name="videoMark" type="xs:boolean"/>
+            <xs:element name="controlWordPathProtection" type="xs:boolean"/>
+            <xs:element name="videoEncryptionLevel" type="EncryptionPercent"/>
+            <xs:element name="audioEncryptionLevel" type="EncryptionPercent"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="VODEncryptionAttributes">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="tag1" type="xs:string"/>
+            <xs:element name="tag2" type="xs:string"/>
+            <xs:element name="tag3" type="xs:string"/>
+            <xs:element name="fileName" type="xs:string"/>
+            <xs:element name="fileSize" type="xs:string"/>
+            <xs:element name="fileType" type="xs:string"/>
+            <xs:element name="targetPath" type="xs:string"/>
+            <xs:element name="copyControlAttributes" type="CopyControlAttributes"/>
+            <xs:element name="encryptionAttributes" type="EncryptionAttributes"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTVEncryptionAttributes">
+        <xs:sequence>
+            <xs:element name="applianceName" type="xs:string"/>
+            <xs:element name="inputURL" type="xs:anyURI"/>
+            <xs:element name="outputURL" type="xs:anyURI"/>
+            <xs:element name="copyControlAttributes" type="CopyControlAttributes"/>
+            <xs:element name="osdAttributes" type="OSDAttributes"/>
+            <xs:element name="encryptionAttributes" type="EncryptionAttributes"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="VODEncryptionStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:int"/>
+            <xs:element name="statusText" type="xs:string"/>
+            <xs:element name="percentComplete" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceAttributes">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="status" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="notBefore" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="notAfter" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="VODContentAttributes">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="tag1" type="xs:string"/>
+            <xs:element name="tag2" type="xs:string"/>
+            <xs:element name="tag3" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTVContentAttributes">
+        <xs:sequence>
+            <xs:element name="applianceId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

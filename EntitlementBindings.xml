@@ -1,0 +1,13 @@
+<jaxws:bindings xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+wsdlLocation="http://localhost:45678/EntitlementMgmt.wsdl">
+
+    <jaxws:bindings node="wsdl:definitions/wsdl:portType[@name='EntitlementMgmt']/wsdl:operation[@name='addEventsToPackage']">
+        <jaxws:parameter part="wsdl:definitions/wsdl:message[@name='addEventsToPackageRequest']/wsdl:part[@name='package']" name="_package" />
+    </jaxws:bindings>
+
+    <jaxws:bindings node="wsdl:definitions/wsdl:portType[@name='EntitlementMgmt']/wsdl:operation[@name='removeEventsFromPackage']">
+        <jaxws:parameter part="wsdl:definitions/wsdl:message[@name='removeEventsFromPackageRequest']/wsdl:part[@name='package']" name="_package" />
+    </jaxws:bindings>
+</jaxws:bindings>

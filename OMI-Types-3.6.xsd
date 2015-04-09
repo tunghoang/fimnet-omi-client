@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.verimatrix.com/schemas/OMItypes.xsd" xmlns:iptv="http://www.verimatrix.com/schemas/IPTVtypes.xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.verimatrix.com/schemas/OMItypes.xsd">
+    <xs:import namespace="http://www.verimatrix.com/schemas/IPTVtypes.xsd" schemaLocation="IPTV-Types-3.6.xsd"/>
+    <xs:simpleType name="DeviceType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LEGACY"/>
+            <xs:enumeration value="STB_IPTV"/>
+            <xs:enumeration value="DESKTOP_PC"/>
+            <xs:enumeration value="DESKTOP_MAC"/>
+            <xs:enumeration value="RSM"/>
+            <xs:enumeration value="RKE"/>
+            <xs:enumeration value="PROF_RECEIVER"/>
+            <xs:enumeration value="STB_HYBRID"/>
+            <xs:enumeration value="STB_DVB_SC"/>
+            <xs:enumeration value="STB_DVB_NSC1"/>
+            <xs:enumeration value="STB_DVB_NSC2"/>
+            <xs:enumeration value="STB_DVB_STB"/>
+            <xs:enumeration value="WEB_PC"/>
+            <xs:enumeration value="WEB_MAC"/>
+            <xs:enumeration value="WEB_IPHONE"/>
+            <xs:enumeration value="WEB_ANDROID"/>
+            <xs:enumeration value="WEB_STB"/>
+            <xs:enumeration value="PLAYREADY_PC"/>
+            <xs:enumeration value="PLAYREADY_MAC"/>
+            <xs:enumeration value="PLAYREADY_IPHONE"/>
+            <xs:enumeration value="PLAYREADY_ANDROID"/>
+            <xs:enumeration value="PLAYREADY_STB"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DEVICE"/>
+            <xs:enumeration value="DOMAIN"/>
+            <xs:enumeration value="RETAILER"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ContentType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DTV"/>
+            <xs:enumeration value="VOD"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NetworkType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="IPTV"/>
+            <xs:enumeration value="OTT"/>
+            <xs:enumeration value="DVB"/>
+            <xs:enumeration value="PLAYREADY"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="RatingLevel">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="SessionHandle">
+        <xs:sequence>
+            <xs:element name="handle" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UserLoginAttributes">
+        <xs:sequence>
+            <xs:element name="userName" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Connection">
+        <xs:sequence>
+            <xs:element name="uri" type="xs:anyURI"/>
+            <xs:element minOccurs="0" name="authId" type="xs:string"/>
+            <xs:element minOccurs="0" name="authPassword" type="xs:string"/>
+            <xs:element minOccurs="0" name="timeout" type="xs:int"/>
+            <xs:element minOccurs="0" name="retryCount" type="xs:int"/>
+            <xs:element minOccurs="0" name="retryInterval" type="xs:int"/>
+            <xs:element minOccurs="0" name="keepAlive" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Network">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="networkType" type="NetworkType"/>
+            <xs:element minOccurs="0" name="connection" type="Connection"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkListResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="networks" type="Network"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Content">
+        <xs:sequence>
+            <xs:element name="smsContentId" type="xs:string"/>
+            <xs:element minOccurs="0" name="description" type="xs:string"/>
+            <xs:element minOccurs="0" name="tag" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentEncryptionAttributes">
+        <xs:choice>
+            <xs:element name="vodEncryptionAttributes" type="iptv:VODEncryptionAttributes"/>
+            <xs:element name="dtvEncryptionAttributes" type="iptv:DTVEncryptionAttributes"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentEncryptionStatus">
+        <xs:choice>
+            <xs:element name="encryptionStatus" type="iptv:VODEncryptionStatus"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="EncryptionStatus">
+        <xs:sequence>
+            <xs:element name="state" type="xs:string"/>
+            <xs:element minOccurs="0" name="description" type="xs:string"/>
+            <xs:element minOccurs="0" name="progress" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="ValueType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="STRING"/>
+            <xs:enumeration value="DATETIME"/>
+            <xs:enumeration value="NUMBER"/>
+            <xs:enumeration value="FLOAT"/>
+            <xs:enumeration value="BOOLEAN"/>
+            <xs:enumeration value="DURATION"/>
+            <xs:enumeration value="BASE64"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="ParameterValue">
+        <xs:sequence>
+            <xs:element name="value" type="xs:string"/>
+            <xs:element name="valueType" type="ValueType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parameter">
+        <xs:sequence>
+            <xs:element name="key" type="xs:string"/>
+            <xs:element name="value" type="ParameterValue"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EncryptionParameters">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="encryptionParameter" type="Parameter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContent">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="smsContentId" type="xs:string"/>
+            <xs:element minOccurs="0" name="networkContentId" type="xs:string"/>
+            <xs:element name="networkContentType" type="ContentType"/>
+            <xs:element minOccurs="0" name="ratingLevel" type="RatingLevel"/>
+            <xs:element minOccurs="0" name="fingerprintMessage" type="FingerprintMessage"/>
+            <xs:element minOccurs="0" name="encryptionAttributes" type="NetworkContentEncryptionAttributes"/>
+            <xs:element minOccurs="0" name="encryptionParameters" type="EncryptionParameters"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EventParameters">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="eventParameter" type="Parameter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Event">
+        <xs:sequence>
+            <xs:element name="smsEventId" type="xs:string"/>
+            <xs:element name="smsContentId" type="xs:string"/>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="exclusive" type="xs:boolean"/>
+            <xs:element name="preStartDuration" type="xs:int"/>
+            <xs:element name="timePeriodRule" type="TimePeriodRule"/>
+            <xs:element minOccurs="0" name="ratingLevel" type="RatingLevel"/>
+            <xs:element minOccurs="0" name="fingerprintMessage" type="FingerprintMessage"/>
+            <xs:element minOccurs="0" name="eventParameters" type="EventParameters"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TimePeriodRule">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="startTime" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="endTime" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EventList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="events" type="Event"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ResultData">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="data" type="xs:base64Binary"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Result">
+        <xs:sequence>
+            <xs:element name="resultId" type="xs:string"/>
+            <xs:element name="resultCode" type="xs:int"/>
+            <xs:element name="resultText" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="resultData" type="ResultData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ResultList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="result" type="Result"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentEncryptionQuery">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="smsContentId" type="xs:string"/>
+            <xs:element name="networkContentId" type="xs:string"/>
+            <xs:element name="networkContentType" type="ContentType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentEncryptionResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element minOccurs="0" name="networkContentEncryptionStatus" type="NetworkContentEncryptionStatus"/>
+            <xs:element minOccurs="0" name="encryptionStatus" type="EncryptionStatus"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentTypeEncryptionQuery">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="networkContentType" type="ContentType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentTypeEncryptionStatus">
+        <xs:sequence>
+            <xs:element name="networkContentId" type="xs:string"/>
+            <xs:element name="networkContentEncryptionStatus" type="NetworkContentEncryptionStatus"/>
+            <xs:element name="encryptionStatus" type="EncryptionStatus"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentTypeEncryptionResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="networkContentTypeEncryptionStatus" type="NetworkContentTypeEncryptionStatus"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentQuery">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="smsContentId" type="xs:string"/>
+            <xs:element name="contentCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="networkContent" type="NetworkContent"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContentOnNetworkQuery">
+        <xs:sequence>
+            <xs:element name="smsContentId" type="xs:string"/>
+            <xs:element minOccurs="0" name="smsNetworkId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContentEventQuery">
+        <xs:sequence>
+            <xs:element name="smsContentId" type="xs:string"/>
+            <xs:element name="smsEventId" type="xs:string"/>
+            <xs:element name="eventCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContentEventResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="events" type="Event"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContentList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="content" type="Content"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContentListQuery">
+        <xs:sequence>
+            <xs:element name="smsContentId" type="xs:string"/>
+            <xs:element name="contentCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContentListResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="content" type="Content"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Device">
+        <xs:sequence>
+            <xs:element name="smsDeviceId" type="xs:string"/>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="deviceType" type="DeviceType"/>
+            <xs:element name="networkDeviceId" type="xs:string"/>
+            <xs:element minOccurs="0" name="smsAuthenticator" type="xs:base64Binary"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="devices" type="Device"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceListQuery">
+        <xs:sequence>
+            <xs:element name="smsDeviceId" type="xs:string"/>
+            <xs:element name="deviceCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkDeviceListQuery">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="smsDeviceId" type="xs:string"/>
+            <xs:element name="deviceCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceListResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="devices" type="Device"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceEntitlementQuery">
+        <xs:sequence>
+            <xs:element name="smsDeviceId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceData">
+        <xs:sequence>
+            <xs:element name="entitlement" type="Entitlement"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="events" type="Event"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceEntitlementResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element minOccurs="0" name="device" type="Device"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entitlements" type="DeviceData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EntitlementListQuery">
+        <xs:sequence>
+            <xs:element name="smsEntitlementId" type="xs:string"/>
+            <xs:element name="entityType" type="EntityType"/>
+            <xs:element name="entitlementCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EntitlementListResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entitlements" type="DeviceData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EntitledEntity">
+        <xs:sequence>
+            <xs:element name="entityType" type="EntityType"/>
+            <xs:element name="entityId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Entitlement">
+        <xs:sequence>
+            <xs:element name="smsEntitlementId" type="xs:string"/>
+            <xs:element name="package" type="Package"/>
+            <xs:element name="entitledEntity" type="EntitledEntity"/>
+            <xs:element name="timePeriodRule" type="TimePeriodRule"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EntitlementList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entitlements" type="Entitlement"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EntitledEntityList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entitledEntities" type="EntitledEntity"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PackageAttributes">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="operatorId" type="xs:string"/>
+            <xs:element minOccurs="0" name="extendedAccessClassId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PackageParameters">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="packageParameter" type="Parameter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Package">
+        <xs:sequence>
+            <xs:element name="smsPackageId" type="xs:string"/>
+            <xs:element minOccurs="0" name="description" type="xs:string"/>
+            <xs:element minOccurs="0" name="packageAttributes" type="PackageAttributes"/>
+            <xs:element minOccurs="0" name="packageParameters" type="PackageParameters"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PackageList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="packages" type="Package"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PackageListQuery">
+        <xs:sequence>
+            <xs:element name="smsPackageId" type="xs:string"/>
+            <xs:element name="packageCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PackageListResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="packages" type="Package"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PackageEventQuery">
+        <xs:sequence>
+            <xs:element name="smsPackageId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PackageEventResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element minOccurs="0" name="package" type="Package"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="events" type="Event"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EventPackageQuery">
+        <xs:sequence>
+            <xs:element name="smsEventId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EventPackageResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element minOccurs="0" name="event" type="Event"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="packages" type="Package"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="DomainAddress">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="64"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="Domain">
+        <xs:sequence>
+            <xs:element name="smsDomainId" type="xs:string"/>
+            <xs:element name="maxDevices" type="xs:int"/>
+            <xs:element name="timePeriodRule" type="TimePeriodRule"/>
+            <xs:element minOccurs="0" name="domainAddress" type="DomainAddress"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DomainList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="domains" type="Domain"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DomainDevice">
+        <xs:sequence>
+            <xs:element name="device" type="Device"/>
+            <xs:element name="timePeriodRule" type="TimePeriodRule"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DomainDeviceList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="domainDevices" type="DomainDevice"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DomainListQuery">
+        <xs:sequence>
+            <xs:element name="smsDomainId" type="xs:string"/>
+            <xs:element name="domainCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DomainListResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="domains" type="Domain"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DomainDeviceListQuery">
+        <xs:sequence>
+            <xs:element name="smsDomainId" type="xs:string"/>
+            <xs:element name="smsDeviceId" type="xs:string"/>
+            <xs:element name="deviceCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DomainDeviceListResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="domainDevices" type="DomainDevice"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceDomainListQuery">
+        <xs:sequence>
+            <xs:element name="smsDeviceId" type="xs:string"/>
+            <xs:element name="smsDomainId" type="xs:string"/>
+            <xs:element name="domainCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DomainEntitlementQuery">
+        <xs:sequence>
+            <xs:element name="domainId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DomainEntitlementResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element minOccurs="0" name="domain" type="Domain"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entitlements" type="DeviceData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RetailerEntitlementQuery">
+        <xs:sequence>
+            <xs:element name="retailerId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RetailerEntitlementResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element minOccurs="0" name="retailer" type="Site"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entitlements" type="DeviceData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DevicePin">
+        <xs:sequence>
+            <xs:element name="index" type="xs:int"/>
+            <xs:element name="value" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DevicePinList">
+        <xs:sequence>
+            <xs:element maxOccurs="4" name="pins" type="DevicePin"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DevicePurse">
+        <xs:sequence>
+            <xs:element name="tokens" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceRegion">
+        <xs:sequence>
+            <xs:element name="region" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceCommand">
+        <xs:sequence>
+            <xs:element name="command" type="xs:base64Binary"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SmartCardDevice">
+        <xs:sequence>
+            <xs:element name="smsSmartCardId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SmartCardDeviceList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="devices" type="SmartCardDevice"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="STBDevice">
+        <xs:sequence>
+            <xs:element name="smsSTBId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="STBDeviceList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="devices" type="STBDevice"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DevicePair">
+        <xs:sequence>
+            <xs:element name="stbDevice" type="STBDevice"/>
+            <xs:element name="smartCardDevice" type="SmartCardDevice"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SmartCardPairingQuery">
+        <xs:sequence>
+            <xs:element name="smartCardDeviceId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SmartCardPairingResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element minOccurs="0" name="stbDeviceList" type="STBDeviceList"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="STBPairingQuery">
+        <xs:sequence>
+            <xs:element name="stbDeviceId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="STBPairingResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element minOccurs="0" name="smartCardDeviceList" type="SmartCardDeviceList"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="MessageQuadrant">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CENTER"/>
+            <xs:enumeration value="NORTH"/>
+            <xs:enumeration value="NORTH_EAST"/>
+            <xs:enumeration value="EAST"/>
+            <xs:enumeration value="SOUTH_EAST"/>
+            <xs:enumeration value="SOUTH"/>
+            <xs:enumeration value="SOUTH_WEST"/>
+            <xs:enumeration value="WEST"/>
+            <xs:enumeration value="NORTH_WEST"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageDisplayMode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FX_NEXTSTB"/>
+            <xs:enumeration value="RM_NEXTSTB"/>
+            <xs:enumeration value="FX_NEXTCA"/>
+            <xs:enumeration value="RM_NEXTCA"/>
+            <xs:enumeration value="FX_STILLCA"/>
+            <xs:enumeration value="RM_STILLCA"/>
+            <xs:enumeration value="FX_IMMED"/>
+            <xs:enumeration value="RM_IMMED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageOrigin">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ORIGL"/>
+            <xs:enumeration value="ORIGR"/>
+            <xs:enumeration value="ORIGTOP"/>
+            <xs:enumeration value="ORIGDWN"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageAnchor">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CENTER"/>
+            <xs:enumeration value="AUTOLR"/>
+            <xs:enumeration value="AUTOTD"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageAlign">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LEFT"/>
+            <xs:enumeration value="RIGHT"/>
+            <xs:enumeration value="CENTER"/>
+            <xs:enumeration value="JUST"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageColor">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageAlpha">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageContentMode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="POS"/>
+            <xs:enumeration value="NEG"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DEVICE"/>
+            <xs:enumeration value="DOMAIN"/>
+            <xs:enumeration value="GLOBAL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="MessageEntity">
+        <xs:sequence>
+            <xs:element name="entityType" type="MessageEntityType"/>
+            <xs:element name="entityId" type="xs:string"/>
+            <xs:element minOccurs="0" name="smsNetworkId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MessageDescriptor">
+        <xs:sequence>
+            <xs:element name="displayMode" type="MessageDisplayMode"/>
+            <xs:element name="displayDuration" type="xs:int"/>
+            <xs:element name="xOrigin" type="MessageOrigin"/>
+            <xs:element name="xPosition" type="xs:int"/>
+            <xs:element name="xAnchor" type="MessageAnchor"/>
+            <xs:element name="yOrigin" type="MessageOrigin"/>
+            <xs:element name="yPosition" type="xs:int"/>
+            <xs:element name="yAnchor" type="MessageAnchor"/>
+            <xs:element name="textAlign" type="MessageAlign"/>
+            <xs:element name="bgColor" type="MessageColor"/>
+            <xs:element name="alpha" type="MessageAlpha"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MessageText">
+        <xs:sequence>
+            <xs:element name="text" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MessageAttributes">
+        <xs:sequence>
+            <xs:element name="contentMode" type="MessageContentMode"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MessageHandle">
+        <xs:sequence>
+            <xs:element name="sector" type="xs:int"/>
+            <xs:element name="messageId" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FingerprintMessage">
+        <xs:sequence>
+            <xs:element maxOccurs="2" name="text" type="MessageText"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="OnScreenMessage">
+        <xs:sequence>
+            <xs:element name="messageHandle" type="MessageHandle"/>
+            <xs:element name="messageAttributes" type="MessageAttributes"/>
+            <xs:element maxOccurs="2" name="messageText" type="MessageText"/>
+            <xs:element maxOccurs="2" name="messageDescriptor" nillable="true" type="MessageDescriptor"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PreloadedMessage">
+        <xs:sequence>
+            <xs:element name="textId" type="xs:int"/>
+            <xs:element name="sector" type="xs:int"/>
+            <xs:element name="messageAttributes" type="MessageAttributes"/>
+            <xs:element name="messageText" type="MessageText"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PreloadedOnScreenMessage">
+        <xs:sequence>
+            <xs:element name="textId" type="xs:int"/>
+            <xs:element name="displayDuration" type="xs:int"/>
+            <xs:element name="messageHandle" type="MessageHandle"/>
+            <xs:element name="messageAttributes" type="MessageAttributes"/>
+            <xs:element name="messageQuadrant" type="MessageQuadrant"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceTypeData">
+        <xs:sequence>
+            <xs:element name="deviceType" type="DeviceType"/>
+            <xs:element name="description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GroupData">
+        <xs:sequence>
+            <xs:element name="groupId" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LicenseData">
+        <xs:sequence>
+            <xs:element name="lowerBounds" type="xs:int"/>
+            <xs:element name="upperBounds" type="xs:int"/>
+            <xs:element name="limit" type="xs:int"/>
+            <xs:element name="activeCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceTypeLicenseData">
+        <xs:sequence>
+            <xs:element name="deviceTypeData" type="DeviceTypeData"/>
+            <xs:element name="licenseData" type="LicenseData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GroupLicenseData">
+        <xs:sequence>
+            <xs:element name="groupData" type="GroupData"/>
+            <xs:element name="licenseData" type="LicenseData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LicenseGroup">
+        <xs:sequence>
+            <xs:element name="groupData" type="GroupData"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="deviceTypeData" type="DeviceTypeData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LicenseGroupsQuery">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LicenseGroupsResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="groups" type="LicenseGroup"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceTypeLicenseDataQuery">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeviceTypeLicenseDataResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="licenseData" type="DeviceTypeLicenseData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GroupLicenseDataQuery">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GroupLicenseDataResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="licenseData" type="GroupLicenseData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkDeviceIdQuery">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="networkDeviceId" type="xs:string"/>
+            <xs:element name="deviceCount" type="xs:int"/>
+            <xs:element minOccurs="0" name="filter" type="NetworkDeviceIdFilter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkDeviceIdFilter">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="deviceType" type="DeviceType"/>
+            <xs:element minOccurs="0" name="attributes" type="NetworkDeviceIdAttributes"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkDeviceIdAttributes">
+        <xs:choice>
+            <xs:element name="deviceAttributes" type="iptv:DeviceAttributes"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="NetworkDeviceIdData">
+        <xs:sequence>
+            <xs:element name="device" type="Device"/>
+            <xs:element minOccurs="0" name="attributes" type="NetworkDeviceIdAttributes"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkDeviceIdResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="devices" type="NetworkDeviceIdData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentIdQuery">
+        <xs:sequence>
+            <xs:element name="smsNetworkId" type="xs:string"/>
+            <xs:element name="networkContentType" type="ContentType"/>
+            <xs:element name="networkContentId" type="xs:string"/>
+            <xs:element name="contentCount" type="xs:int"/>
+            <xs:element minOccurs="0" name="filter" type="NetworkContentIdFilter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentIdFilter">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="attributes" type="NetworkContentIdAttributes"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentIdAttributes">
+        <xs:choice>
+            <xs:element name="dtvContentAttributes" type="iptv:DTVContentAttributes"/>
+            <xs:element name="vodContentAttributes" type="iptv:VODContentAttributes"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentIdData">
+        <xs:sequence>
+            <xs:element name="networkContent" type="NetworkContent"/>
+            <xs:element minOccurs="0" name="attributes" type="NetworkContentEncryptionAttributes"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkContentIdResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="networkContent" type="NetworkContentIdData"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="SiteEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RETAILER"/>
+            <xs:enumeration value="WHOLESALER"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="Site">
+        <xs:sequence>
+            <xs:element name="smsSiteId" type="xs:string"/>
+            <xs:element name="entityType" type="SiteEntityType"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="siteId" type="xs:string"/>
+            <xs:element minOccurs="0" name="authPassword" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SiteQuery">
+        <xs:sequence>
+            <xs:element name="smsSiteId" type="xs:string"/>
+            <xs:element name="entityType" type="SiteEntityType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SiteResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element minOccurs="0" name="site" type="Site"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SiteListQuery">
+        <xs:sequence>
+            <xs:element name="smsSiteId" type="xs:string"/>
+            <xs:element name="entityType" type="SiteEntityType"/>
+            <xs:element name="siteCount" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SiteListResult">
+        <xs:sequence>
+            <xs:element name="result" type="Result"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="sites" type="Site"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
